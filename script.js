@@ -195,7 +195,7 @@ function displayButtons() {
     chosenOne.remove();
     remove.remove()
     filtered();
-    if(clickedCategories=== 0 ){
+    if(clickedCategories.length === 0 ){
       searchbar.classList.remove("searchbar-active")
     }
   });
