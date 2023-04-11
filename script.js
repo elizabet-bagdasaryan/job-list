@@ -44,7 +44,7 @@ function displayJobs(data) {
     const leftSection = createDomElement("div", "left-section");
     const rightSection = createDomElement("div", "right-section");
 
-//   const filterAttributes = createElement("div", "right-section")
+
 
     const photo = createDomElement("img", "logo", logo);
     const companyName= createDomElement("p", "company", null, company);
@@ -113,7 +113,7 @@ function displayJobs(data) {
     clickedCategories = [];
     displayButtons();
     searchbar.classList.remove("searchbar-active")
-    searchbar.innerHTML = " "
+    // searchbar.innerHTML = " "
     filtered();})
 
 
@@ -135,6 +135,7 @@ chosenLevel.forEach( (e)=> {
       if (!clickedCategories.includes(e.textContent)) {
         clickedCategories.push(e.textContent);
       }
+
       filtered();
       displayButtons();
     });
@@ -146,6 +147,7 @@ chosenLevel.forEach( (e)=> {
       if (!clickedCategories.includes(e.textContent)) {
         clickedCategories.push(e.textContent);
       }
+      
       displayButtons();
       filtered();
     });
@@ -174,21 +176,17 @@ function filtered() {
   displayJobs(search);
 }
 
-const remove = createDomElement("span", "delete", null, "x")
 
 function displayButtons() {
-  searchbar.innerHTML = "";
+  chosenDivs.innerHTML = "";
 
   for (let i = 0; i < clickedCategories.length; i++) {
    const chosenOne = createDomElement("div", "chosen-one", null);
    chosenOne.textContent = clickedCategories[i];
+   
+   const remove = createDomElement("span", "delete", null, "x")
    chosenOne.append(remove)
    chosenDivs.append(chosenOne)
-  
-   searchbar.append(clear)
-   searchbar.prepend(chosenDivs)
-
-
   }
 
 
