@@ -1,7 +1,10 @@
 import data from "./data.json" assert { type: "json" };
 
 const jobsList = document.querySelector(".jobs");
-
+const card = document.querySelector(".card")
+const searchbar = document.querySelector(".searchbar")
+const clear = document.getElementById("clear")
+const chosenDivs = document.querySelector('.chosen-items')
 
 const createDomElement = (tag, className, src, text, event, eventFc) => {
   const element = document.createElement(tag);
@@ -24,7 +27,7 @@ const createDomElement = (tag, className, src, text, event, eventFc) => {
   return element;
 };
 
-
+let clickedCategories  = []
 
 displayJobs(data);
 
@@ -32,20 +35,7 @@ function displayJobs(data) {
   jobsList.innerHTML = "";
 
   for (let i = 0; i < data.length; i++) {
-    const {
-      company,
-      logo,
-      brandNew,
-      featured,
-      position,
-      role,
-      level,
-      postedAt,
-      contract,
-      location,
-      languages,
-      tools,
-    } = data[i];
+    const {company,logo,brandNew,featured,position,role,level,postedAt,contract,location,languages,tools,} = data[i];
 
     const card = createDomElement("div", "card");
     const companyInfo = createDomElement("div","company-info")
@@ -57,7 +47,7 @@ function displayJobs(data) {
 //   const filterAttributes = createElement("div", "right-section")
 
     const photo = createDomElement("img", "logo", logo);
-    const companyName= createDomElement("p", "company-title", null, company);
+    const companyName= createDomElement("p", "company", null, company);
     const dateInfo = createDomElement("p", "new", null, brandNew);
     const featuredInfo = createDomElement("p", "featured", null, featured);
 
@@ -72,17 +62,18 @@ function displayJobs(data) {
     const locationInfo = createDomElement("li", "location", null, location);
 
     const horizonalLine = document.createElement("hr");
+   
 
 
     for (let i = 0; i <languages.length; i++) {
-      let eachLanguage = createDomElement("p","languages",null,languages);
+      let eachLanguage = createDomElement("p","language",null,languages);
       skills.append(eachLanguage);
 
       eachLanguage.textContent = languages[i];
     }
 
     for (let i = 0; i < tools.length; i++) {
-      let eachTool = createDomElement("p","tools",null,tools);
+      let eachTool = createDomElement("p","tool",null,tools);
       skills.append(eachTool);
 
       eachTool.textContent = tools[i];
@@ -112,8 +103,95 @@ function displayJobs(data) {
       featuredInfo.classList.add("not-featured");
     }
   }
+  
+  let chosenRole = document.querySelectorAll(".role")
+  let chosenLevel = document.querySelectorAll(".level")
+  let chosenLanguage = document.querySelectorAll(".language")
+  let chosenTool = document.querySelectorAll(".tool")
 
- 
+  clear.addEventListener("click", function () {
+    clickedCategories = [];
+    displayButtons();
+    searchbar.classList.remove("searchbar-active")
+    searchbar.innerHTML = " "
+    filtered();})
+
+
+  chosenRole.forEach( (e)=> {
+    e.addEventListener("click",  () =>{
+      card.classList.add("searchbar-active")
+      if (!clickedCategories.includes(e.textContent)) {
+        clickedCategories.push(e.textContent)
+        ;
+      }
+      displayButtons();
+      filtered();
+    });
+  });
+
+chosenLevel.forEach( (e)=> {
+    e.addEventListener("click",()=> {
+      searchbar.classList.add("searchbar-active")
+      if (!clickedCategories.includes(e.textContent)) {
+        clickedCategories.push(e.textContent);
+      }
+      filtered();
+      displayButtons();
+    });
+  });
+
+  chosenLanguage.forEach( (e)=> {
+    e.addEventListener("click",  ()=> {
+      searchbar.classList.add("searchbar-active")
+      if (!clickedCategories.includes(e.textContent)) {
+        clickedCategories.push(e.textContent);
+      }
+      displayButtons();
+      filtered();
+    });
+  });
+
+chosenTool.forEach( (e)=> {
+    e.addEventListener("click",  ()=> {
+      searchbar.classList.add("searchbar-active")
+      if (!clickedCategories.includes(e.textContent)) {
+        clickedCategories.push(e.textContent);
+      }
+      displayButtons();
+      filtered();
+    });
+  });
    
 }
   
+function filtered() {
+  let search = data.filter((i) =>
+    clickedCategories.every(
+      (element) =>
+        i.role === element ||i.level === element ||i.languages.includes(element) ||i.tools.includes(element)
+    )
+  );
+  displayJobs(search);
+}
+
+const remove = createDomElement("span", "delete", null, "x")
+
+function displayButtons() {
+  searchbar.innerHTML = "";
+
+  for (let i = 0; i < clickedCategories.length; i++) {
+   const chosenOne = createDomElement("div", "chosen-one", null);
+   chosenOne.textContent = clickedCategories[i];
+   chosenOne.append(remove)
+   chosenDivs.append(chosenOne)
+  
+   searchbar.append(clear)
+   searchbar.prepend(chosenDivs)
+
+
+  }
+
+
+}
+
+

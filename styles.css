@@ -26,7 +26,9 @@ body{
    display:flex;
    flex-wrap: wrap;
    padding:12px 20px;
-   margin:auto
+   margin:auto;
+   margin-top:38vw
+  
  
    
 }
@@ -53,9 +55,16 @@ body{
     background-color:transparent;
     text-decoration: underline;
     cursor:pointer;  
-    margin-left:auto
+    margin-left:auto;
+    border:none;
+    font-weight:600;
+    font-size:18px
     
 }
+.postedAt{
+    margin-top:0px
+}
+
 
 .card{
     background-color:white;
@@ -173,8 +182,20 @@ hr{
     display:none
 }
 
-.chosen{
+.chosen-items{
     display:flex;
+}
+.chosen-items div{
+    color:#5CA5A5;
+    background-color: #f0f6f6;
+    font-weight:600;
+    padding:8px 12px 0 12px;
+    border-radius:4px;
+    text-align:center;
+    width:min-content;
+    margin: 7px 5px;
+   
+       
 }
 
 .delete{
@@ -183,7 +204,7 @@ hr{
     padding: 5px 10px;
     border-radius: 0 5px 5px 0;margin-left:-5px;
     font-weight:600;
-    font-size:20px     
+    font-size:22px     
 }
 
 .delete:hover {
@@ -263,6 +284,9 @@ hr{
         background-color:#5CA5A5;
         color:#FFFFFF;
         cursor: pointer;
+    }
+    .searchbar-active{
+        margin-top:10vw
     }
      
 }
