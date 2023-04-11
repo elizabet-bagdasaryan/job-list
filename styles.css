@@ -7,6 +7,7 @@ body{
     background-image: url(./img/background-mobile.png);
     background-repeat: no-repeat;
     background-size:100%;
+    padding-top:300px
 }
 
 
@@ -27,11 +28,13 @@ body{
    flex-wrap: wrap;
    padding:12px 20px;
    margin:auto;
-   margin-top:38vw
-  
- 
-   
+   margin-top:-1vw;
+   justify-content:space-between
+
+    
 }
+
+
 .chosen-items{
     display:flex;
     flex-wrap: wrap;
@@ -55,14 +58,14 @@ body{
     background-color:transparent;
     text-decoration: underline;
     cursor:pointer;  
-    margin-left:auto;
     border:none;
     font-weight:600;
     font-size:18px;
+    margin-top:12px;
  
-
-    
 }
+
+
 .postedAt{
     margin-top:0px
 }
@@ -187,26 +190,30 @@ hr{
 .chosen-items{
     display:flex;
 }
-.chosen-items div{
+.chosen-one {
     color:#5CA5A5;
     background-color: #f0f6f6;
     font-weight:600;
-    padding:8px 12px 0 12px;
+    padding:8px 12px;
     border-radius:4px;
-    text-align:center;
     width:min-content;
+    text-align:center;
     margin: 7px 5px;
-   
-       
+    height: 18px; 
+
 }
+
 
 .delete{
     background-color:#5CA5A5;
     color:white;
-    padding: 5px 10px;
-    border-radius: 0 5px 5px 0;margin-left:-5px;
+    padding: 8px 10px;
+    border-radius: 0 5px 5px 0;
+    margin-left:-5px;
     font-weight:600;
-    font-size:22px     
+    height:18px;
+    margin-top:7px;
+    margin-right:10px   
 }
 
 .delete:hover {
@@ -219,12 +226,12 @@ hr{
   }
 
 
-
 @media (min-width:768px){
     body{
         background-image: url(./img/background-desktop.png);
         background-repeat: no-repeat;
         background-size:100vw;
+        padding-top:250px
     }
     .card{
         display:flex; 
@@ -288,7 +295,7 @@ hr{
         cursor: pointer;
     }
     .searchbar-active{
-        margin-top:10vw
+        margin-top:0vw;
     }
      
 }

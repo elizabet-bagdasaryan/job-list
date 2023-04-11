@@ -173,6 +173,7 @@ function filtered() {
         i.role === element ||i.level === element ||i.languages.includes(element) ||i.tools.includes(element)
     )
   );
+
   displayJobs(search);
 }
 
@@ -186,10 +187,22 @@ function displayButtons() {
    
    const remove = createDomElement("span", "delete", null, "x")
    chosenOne.append(remove)
-   chosenDivs.append(chosenOne)
+   chosenDivs.append(chosenOne, remove)
+
+  remove.addEventListener("click", function() {
+    const categoryToRemove = clickedCategories.indexOf(chosenOne.textContent);
+    clickedCategories.splice(categoryToRemove, 1);
+    chosenOne.remove();
+    remove.remove()
+    filtered();
+    if(clickedCategories.length === 0){
+      searchbar.classList.remove("searchbar-active")
+    }
+  });
+  
+
+  
+
+
   }
-
-
-}
-
-
+ }
