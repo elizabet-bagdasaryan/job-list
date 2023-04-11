@@ -7,7 +7,8 @@ body{
     background-image: url(./img/background-mobile.png);
     background-repeat: no-repeat;
     background-size:100%;
-    padding-top:300px
+    padding-top:38vw
+   
 }
 
 
@@ -28,7 +29,6 @@ body{
    flex-wrap: wrap;
    padding:12px 20px;
    margin:auto;
-   margin-top:-1vw;
    justify-content:space-between
 
     
@@ -231,7 +231,8 @@ hr{
         background-image: url(./img/background-desktop.png);
         background-repeat: no-repeat;
         background-size:100vw;
-        padding-top:250px
+        padding-top: 9vw;
+      
     }
     .card{
         display:flex; 
@@ -294,8 +295,7 @@ hr{
         color:#FFFFFF;
         cursor: pointer;
     }
-    .searchbar-active{
-        margin-top:0vw;
-    }
+   
+   
      
 }
